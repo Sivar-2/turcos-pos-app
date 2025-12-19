@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap');
+
+/* Tailwind Directives (handled by CDN script in index, but keeping custom vars here) */
+:root {
+    --turco-black: #0a0a0a;
+    --turco-red: #E53935;
+}
+
+body {
+    background-color: var(--turco-black);
+    color: #E0E0E0;
+    font-family: 'Outfit', sans-serif;
+    touch-action: manipulation; /* Disables double-tap zoom for faster clicks */
+    -webkit-tap-highlight-color: transparent;
+    overflow: hidden; /* App-like feel */
+}
+
+/* Custom Utilities */
+.btn-press:active {
+    transform: scale(0.96);
+    transition: transform 0.05s;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Poka-yoke Animations */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+}
+.animate-shake {
+    animation: shake 0.3s ease-in-out;
+    border-color: #E53935 !important;
+}
+
+/* Modal Transitions */
+.modal-enter {
+    opacity: 0;
+    transform: scale(0.95);
+}
+.modal-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 200ms, transform 200ms;
+}
+.modal-exit {
+    opacity: 1;
+}
+.modal-exit-active {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 200ms, transform 200ms;
+}
